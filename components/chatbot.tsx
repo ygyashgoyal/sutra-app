@@ -19,6 +19,7 @@ type ChatbotProps = {
 }
 
 export default function Chatbot({
+    onMessagesUpdate,
     temperature,
     maxTokens,
     stream,
@@ -51,11 +52,17 @@ export default function Chatbot({
     })
 
     useEffect(() => {
+        const filteredMessages = messages
+            .filter((m) => m.role === "user" || m.role === "assistant")
+            .map((m) => ({ role: m.role as "user" | "assistant", content: m.content }))
+
+        onMessagesUpdate(filteredMessages)
+
+
         if (scrollRef.current) {
-          scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight
         }
-      }, [messages])
-      
+    }, [messages, onMessagesUpdate])
 
     return (
         <div className="min-h-screen bg-white">
@@ -105,8 +112,8 @@ export default function Chatbot({
                                         </div>
                                         <div
                                             className={`max-w-[80%] p-4 rounded-lg ${msg.role === "user"
-                                                    ? "bg-blue-600 text-white"
-                                                    : "bg-gray-50 text-black border border-gray-200"
+                                                ? "bg-blue-600 text-white"
+                                                : "bg-gray-50 text-black border border-gray-200"
                                                 }`}
                                         >
                                             <p className="whitespace-pre-wrap">
