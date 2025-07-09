@@ -10,16 +10,12 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { Textarea } from "@/components/ui/textarea"
 import { Slider } from "@/components/ui/slider"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import {
   Code2,
-  Play,
   Settings,
-  User,
-  Bot,
 } from "lucide-react"
 import Chatbot from "@/components/chatbot"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -160,7 +156,7 @@ export default function SUTRAPlayground() {
             <div className="flex items-center justify-between py-2">
               <div>
                 <label className="text-sm font-medium text-gray-700">Stream</label>
-                <p className="text-xs text-gray-500">Stream response as it's generated</p>
+                <p className="text-xs text-gray-500">Stream response as it&apos;s generated</p>
               </div>
               <Switch checked={stream} onCheckedChange={setStream} className="data-[state=checked]:bg-blue-600" />
             </div>

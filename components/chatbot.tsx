@@ -19,7 +19,6 @@ type ChatbotProps = {
 }
 
 export default function Chatbot({
-    onMessagesUpdate,
     temperature,
     maxTokens,
     stream,
@@ -52,15 +51,11 @@ export default function Chatbot({
     })
 
     useEffect(() => {
-        const filteredMessages = messages
-            .filter((m) => m.role === "user" || m.role === "assistant")
-            .map((m) => ({ role: m.role, content: m.content }))
-        onMessagesUpdate(filteredMessages)
-
         if (scrollRef.current) {
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight
         }
-    }, [messages, onMessagesUpdate])
+      }, [messages])
+      
 
     return (
         <div className="min-h-screen bg-white">
