@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
-  SelectItem,     
+  SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge"
 import {
   Code2,
   Settings,
+  Bot,
 } from "lucide-react"
 import Chatbot from "@/components/chatbot"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -57,12 +58,12 @@ export default function SUTRAPlayground() {
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
+              <div className="bg-blue-100 p-2 rounded-full">
+                <Bot className="h-6 w-6 text-blue-600" />
               </div>
               <h1 className="text-xl font-semibold text-gray-900">Playground</h1>
             </div>
-            <div></div>
+
           </div>
 
           <div className="flex items-center space-x-4">
@@ -204,7 +205,9 @@ export default function SUTRAPlayground() {
 
       {showCode && (
         <div className="fixed inset-0 bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[90vw] max-w-4xl">
+          <div
+            className={`bg-white p-6 rounded-lg shadow-lg w-[90vw] max-w-4xl" : "w-1/2"`}
+          >
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold">View Code</h2>
               <Select value={codeLanguage} onValueChange={setCodeLanguage}>
